@@ -1,0 +1,4 @@
+migrations/
+env/
+__pycache__/
+.vscode
