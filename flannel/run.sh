@@ -17,6 +17,7 @@ export k3stoken=$(footloose ssh root@node0 -- cat /var/lib/rancher/k3s/server/no
 # set up node1 and node2 as worker nodes using node-token from node0, it will connect worker nodes to master node
 footloose ssh root@node1 -- "curl -sfL https://get.k3s.io | K3S_URL=https://node0:6443 K3S_TOKEN=$k3stoken sh - "
 footloose ssh root@node2 -- "curl -sfL https://get.k3s.io | K3S_URL=https://node0:6443 K3S_TOKEN=$k3stoken sh - "
+footloose ssh root@node1 -- "curl -sfL https://raw.githubusercontent.com/faayam/packet-analysis-tcpdump/main/flannel/install-packages.sh?token=GHSAT0AAAAAABRAVOO2EVNNBPO6SYG7YI52YQXP4HQ | sh -"
 
 # log in node0
 

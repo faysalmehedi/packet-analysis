@@ -9,11 +9,14 @@
 - HTTP header
 - Vxlan traffic demo
 
+#### Load balancing with nginx project demo
+Project link is [here](https://github.com/faayam/load_balancing_nginx_docker). 
+
 #### Hexadecimal Header
 ![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/hexadecimal-header.png)
 
 #### Ethernet Frame Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ethernet-header)
+![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ethernet-header.jpeg)
 
 #### IP Header
 ![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ip-header.png)
@@ -21,8 +24,6 @@
 #### TCP Header
 ![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/tcp-header.jpg)
 
-#### TCP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/tcp-header.jpg)
 
 #### Flannel Packet Header
 ![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/flannel/flannel.jpg)
@@ -50,6 +51,8 @@ export k3stoken=$(footloose ssh root@node0 -- cat /var/lib/rancher/k3s/server/no
 # set up node1 and node2 as worker nodes using node-token from node0, it will connect worker nodes to master node
 footloose ssh root@node1 -- "curl -sfL https://get.k3s.io | K3S_URL=https://node0:6443 K3S_TOKEN=$k3stoken sh - "
 footloose ssh root@node2 -- "curl -sfL https://get.k3s.io | K3S_URL=https://node0:6443 K3S_TOKEN=$k3stoken sh - "
+footloose ssh root@node1 -- "curl -sfL https://raw.githubusercontent.com/faayam/packet-analysis-tcpdump/main/flannel/install-packages.sh?token=GHSAT0AAAAAABRAVOO2EVNNBPO6SYG7YI52YQXP4HQ | sh -"
+
 
 # log in node0
 
