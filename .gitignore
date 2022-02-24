@@ -1,4 +1,4 @@
-migrations/
-env/
-__pycache__/
 .vscode
+load_balancing_nginx_docker/
+cluster-key
+cluster-key.pub

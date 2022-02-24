@@ -1,0 +1,19 @@
+cluster:
+  name: footloose-k8s
+  privateKey: cluster-key
+machines:
+- count: 3
+  spec:
+    image: quay.io/footloose/ubuntu18.04
+
+    name: node%d
+    privileged: true
+    networks:
+    - footloose-cluster
+    portMappings:
+    - containerPort: 22
+    volumes:
+    - type: volume
+      destination: /var/lib/docker
+    - type: volume
+      destination: /var/lib/rancher/k3s

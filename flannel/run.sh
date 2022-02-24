@@ -1,37 +1,4 @@
-## Packet analysis with tcpdump
-
-### Contents:
-- Load balancing with nginx project demo
-- Hexadecimal explanation
-- Layer-2 / ethernet frame header 
-- Layer-3 / network / IP header
-- Layer-4 / Transport / TCP header
-- HTTP header
-- Vxlan traffic demo
-
-#### Hexadecimal Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/hexadecimal-header.png)
-
-#### Ethernet Frame Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ethernet-header)
-
-#### IP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ip-header.png)
-
-#### TCP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/tcp-header.jpg)
-
-#### TCP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/tcp-header.jpg)
-
-#### Flannel Packet Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/flannel/flannel.jpg)
-
-
-#### K3S cluster setup with footloose; K3S use flannel cni as backend which is based on vxlan technology
-
-```bash
-# Install footloose and docker for this demo
+# install footloose and docker for this demo
 # https://github.com/weaveworks/footloose
 
 # create a docker network for our footloose cluster. It will work as the switch between nodes
@@ -81,9 +48,3 @@ tshark --color -i eth0 -d udp.port==8472,vxlan -f "port 8472"
 tshark --color -i eth0 -V -c 2 -d udp.port==8472,vxlan -f "port 8472"
 
 ## tcpdump -l -n -i <if> 'port 4789 and udp[8:2] = 0x0800 & 0x0800 and udp[11:4] = <vni> & 0x00FFFFFF'
-
-
-```
-
-#### Flannel Traffic Flow diagram
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/flannel/flannel-traffic-flow.png)
