@@ -7,29 +7,29 @@
 - Layer-3 / network / IP header
 - Layer-4 / Transport / TCP header
 - HTTP header
-- Vxlan traffic demo
+- Vxlan/overlay traffic demo
 
 #### Load balancing with nginx project demo
 Project link is [here](https://github.com/faayam/load_balancing_nginx_docker). 
 
 #### Hexadecimal Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/hexadecimal-header.png)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/hexadecimal-header.png)
 
 #### Ethernet Frame Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ethernet-header.jpeg)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/ethernet-header.jpeg)
 
 #### IP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/ip-header.png)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/ip-header.png)
 
 #### TCP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/tcp-header.jpg)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/tcp-header.jpg)
 
 #### UDP Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/udp-header.png)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/udp-header.png)
 
 
 #### Flannel Packet Header
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/flannel/flannel.jpg)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/flannel/flannel.jpg)
 
 
 #### K3S cluster setup with footloose; K3S use flannel cni as backend which is based on vxlan technology
@@ -92,4 +92,4 @@ tshark --color -i eth0 -V -c 2 -d udp.port==8472,vxlan -f "port 8472"
 ```
 
 #### Flannel Traffic Flow diagram
-![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/flannel/flannel-traffic-flow.png)
+![Project Diagram](https://github.com/faayam/packet-analysis/blob/main/flannel/flannel-traffic-flow.png)
