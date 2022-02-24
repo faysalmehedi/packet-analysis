@@ -24,6 +24,9 @@ Project link is [here](https://github.com/faayam/load_balancing_nginx_docker).
 #### TCP Header
 ![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/tcp-header.jpg)
 
+#### UDP Header
+![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/udp-header.png)
+
 
 #### Flannel Packet Header
 ![Project Diagram](https://github.com/faayam/packet-analysis-tcpdump/blob/main/flannel/flannel.jpg)
