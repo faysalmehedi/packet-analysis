@@ -39,7 +39,9 @@ export k3stoken=$(footloose ssh root@node0 -- cat /var/lib/rancher/k3s/server/no
 # set up node1 and node2 as worker nodes using node-token from node0, it will connect worker nodes to master node
 footloose ssh root@node1 -- "curl -sfL https://get.k3s.io | K3S_URL=https://node0:6443 K3S_TOKEN=$k3stoken sh - "
 footloose ssh root@node2 -- "curl -sfL https://get.k3s.io | K3S_URL=https://node0:6443 K3S_TOKEN=$k3stoken sh - "
-footloose ssh root@node1 -- "curl -sfL https://raw.githubusercontent.com/faysalmehedi/packet-analysis-tcpdump/main/flannel/install-packages.sh?token=GHSAT0AAAAAABRAVOO2EVNNBPO6SYG7YI52YQXP4HQ | sh -"
+
+# for traffic analysis we need packeges installed in the nodes. 
+footloose ssh root@node1 -- "curl -sfL https://raw.githubusercontent.com/faysalmehedi/packet-analysis/main/flannel/install-packages.sh | sh -"
 
 
 # log in node0
@@ -54,6 +56,18 @@ kubectl create deployment nginx2 --image=nginx
 
 # flannel commands
 
+# to see the traffic flow we need to send traffic node2 nginx pod to node1 ngix pod
+# get pods details at node0(master)
+kubectl get pods -o wide
+
+# copy the node2 pod name and ip of node1
+# send the traffic
+kubectl exec <node2 nginx pod id/name> curl <node1-ip-name>
+
+# open a tab in terminal
+# ssh to node1 for packet analysis
+footloose ssh root@node1
+
 # tcpdump
 
 ip -d link show flannel.1
@@ -65,8 +79,8 @@ tcpdump -i eth0 -n -e "udp"
 
 # tshark
 
-tshark --color -i -V -c 2 cni0 -f "port 80"
-tshark --color -i -V -c 2 flannel.1 -f "port 80"
+tshark --color -i cni0 -V -c 2 -f "port 80"
+tshark --color -i flannel.1 -V -c 2 -f "port 80"
 tshark --color -i eth0 -f "port 8472"
 tshark --color -i eth0 -d udp.port==8472,vxlan -f "port 8472"
 tshark --color -i eth0 -V -c 2 -d udp.port==8472,vxlan -f "port 8472"
